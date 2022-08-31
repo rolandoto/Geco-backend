@@ -16,6 +16,5 @@ dbConnection()
 
 app.use("/api/auth",AuthRoutes.router)
 
-app.listen(port,(e) =>{
-    console.log(`puesto correct ${e}`)
-})
+var port_number = app.listen(process.env.PORT || 4000);
+app.listen(port_number);
