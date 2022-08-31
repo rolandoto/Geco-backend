@@ -3,9 +3,10 @@ const cors = require("cors")
 const AuthRoutes = require("./routes/Auth")
 const { dbConnection } = require("./database/db")
 require('dotenv').config()
-const local = 8000 || 9000
 
 const app = express()
+
+let port = process.env.PORT || 8080;
 
 app.use(express.static("public"))
 app.use(express.json())
@@ -15,6 +16,6 @@ dbConnection()
 
 app.use("/api/auth",AuthRoutes.router)
 
-app.listen(local,(e) =>{
+app.listen(port,(e) =>{
     console.log(`puesto correct ${e}`)
 })
