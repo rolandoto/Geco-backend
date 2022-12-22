@@ -1,5 +1,6 @@
 const {response} = require("express")
 const res = require("express/lib/response")
+const mysql = require("mysql")
 const { pool } = require("../database/connection")
 
 
@@ -24,8 +25,6 @@ const userProduct= async(req,res=response) =>{
     })
 
 }
-
-
 
 const userProvedor =async(req,res=response) =>{
 
