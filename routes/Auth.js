@@ -16,6 +16,6 @@ router.post("/insertproduct",inserProduct)
 
 router.get("/getprovedor",getProvedor)
 
-router.get("/getproductos",getProductos)
+router.get("/reservas",getProductos)
 
 module.exports={router}

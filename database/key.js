@@ -1,8 +1,9 @@
 module.exports ={
-    database:{
+    database: {
+        connectionLimit: 10,
         host:"51.161.116.86",
-        database:"grupo_db_rolando",
-        user:"grupo_rolando",
-        password:"rolando2022*"
+        database:'grupo_pms',
+        user:"grupo_pms",
+        password:"Ex?9K!F2AW{g"
     }
 }

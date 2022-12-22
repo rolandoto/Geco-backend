@@ -214,7 +214,7 @@ const getProvedor=async(req,res=response) =>{
 
 const getProductos=async(req,res=response) =>{
 
-    const query = await pool.query("SELECT * FROM productos")
+    const query = await pool.query("SELECT * FROM Reservas")
     
     res.status(201).json({
         ok:true,
