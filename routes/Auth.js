@@ -1,10 +1,6 @@
-const { userProduct, userProvedor, inserProvedor, inserProduct, userRegister, userLogin, getProvedor, getProductos } = require("../controller/UserController")
+const { userProduct, userProvedor, inserProvedor, inserProduct, getProvedor, getProductos } = require("../controller/UserController")
 
 const router = require("express").Router()
-
-router.post("/register",userRegister)
-
-router.post("/login",userLogin)
 
 router.get("/listmotel/:id",userProduct)
 
