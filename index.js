@@ -16,5 +16,6 @@ dbConnection()
 
 app.use("/api/auth",AuthRoutes.router)
 
-var port_number = app.listen(process.env.PORT || 4000);
+var port_number = app.listen(process.env.PORT || 5000);
+
 app.listen(port_number);

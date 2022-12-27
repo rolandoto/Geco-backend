@@ -1,14 +1,8 @@
 const mysql = require("mysql")
 const {promisify} = require("util")
+const { database } = require("./key")
 
-
-
-const pool = mysql.createPool({
-        host:"51.161.116.86",
-        database:'grupo_pms',
-        user:"grupo_pms",
-        password:",IP7ORV^9LVY",
-})
+const pool = mysql.createPool(database)
 
 pool.getConnection((err, connection) => {
     if (err) {
