@@ -12,7 +12,7 @@ app.use(cors())
 
 dbConnection()
 
-app.use("/api/auth",AuthRoutes.router)
+app.use("/api/resecion",AuthRoutes.router)
 
 var port_number = app.listen(process.env.PORT || 5000);
 
