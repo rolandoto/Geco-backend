@@ -1,17 +1,18 @@
-const { userProduct, userProvedor, inserProvedor, inserProduct, getProvedor, getProductos } = require("../controller/UserController")
-
 const router = require("express").Router()
+const multer = require('multer');
+const { UploadFile } = require("../controller/UserController");
 
-router.get("/listmotel/:id",userProduct)
+var storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+      callback(null, './public')
+  },
+  filename: function (req, file, callback) {
+      callback(null, file.fieldname + Date.now() + path.extname(file.originalname))
+  }
+})
 
-router.get("/listprovesor/:id",userProvedor)
+var uploads = multer({ storage: storage })
 
-router.post("/insertprovedores",inserProvedor)
-
-router.post("/insertproduct",inserProduct)
-
-router.get("/getprovedor",getProvedor)
-
-router.get("/reservas",getProductos)
+router.post('/uploadfile',uploads.array("myFile",2),UploadFile)
 
 module.exports={router}
