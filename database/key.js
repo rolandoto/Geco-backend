@@ -1,6 +1,6 @@
 module.exports ={
     database: {
-         connectionLimit: 10,
+        connectionLimit: 10,
         host:"51.161.116.86",
         database:'grupohot_hoteles',
         user:"grupohoteles_userAdmHoteles",

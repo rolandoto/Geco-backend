@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const multer = require('multer');
 const { UploadFile } = require("../controller/UserController");
+var path = require("path")
 
 var storage = multer.diskStorage({
   destination: function (req, file, callback) {
