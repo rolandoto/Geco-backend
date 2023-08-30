@@ -49,7 +49,59 @@ const UploadFile = async(req, res=response) =>{
       })
     }
   }
+
+
+
+  const UploalPopUp = async(req, res=response) =>{  
+
+    const  {id} =  req.body
+  
+    try {
+  
+      const files = req.files;
+  
+      if (!files || files.length !== 1) {
+        return res.status(401).json({
+          ok: false,
+          msg: 'Debe seleccionar dos imágenes',
+        });
+      }
+  
+      const rutaPopUp = 'https://geco-backend-production.up.railway.app/public/' + files[0].filename;
+    
+      let data = {
+        Img_description: rutaPopUp,
+      };
+      
+      await pool.query(
+        'UPDATE PopUpPms SET ? WHERE ID = 1',
+        [data, id],
+        (err, customer) => {
+          if (err) {
+            return res.status(401).json({
+              ok: false,
+              msg: 'Error al actualizar datos',
+            });
+          } else {
+            return res.status(201).json({
+              ok: true,
+            });
+          }
+        }
+      );
+  
+    } catch (error) {
+      console.log(error)
+      res.status(401).json({
+        ok:false
+      })
+    }
+  }
+
+
+
   
   module.exports ={
-    UploadFile
+    UploadFile,
+    UploalPopUp
   }

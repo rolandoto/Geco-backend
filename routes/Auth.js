@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const multer = require('multer');
-const { UploadFile } = require("../controller/UserController");
+const { UploadFile, UploalPopUp } = require("../controller/UserController");
 var path = require("path")
 
 var storage = multer.diskStorage({
@@ -15,5 +15,7 @@ var storage = multer.diskStorage({
 var uploads = multer({ storage: storage })
 
 router.post('/uploadfile',uploads.array("myFile",2),UploadFile)
+
+router.post('/uploadPopUp',uploads.array("myFile",1),UploalPopUp)
 
 module.exports={router}
