@@ -54,7 +54,6 @@ const UploadFile = async(req, res=response) =>{
 
   const UploalPopUp = async(req, res=response) =>{  
 
-    const  {id} =  req.body
   
     try {
   
@@ -75,7 +74,7 @@ const UploadFile = async(req, res=response) =>{
       
       await pool.query(
         'UPDATE PopUpPms SET ? WHERE ID = 1',
-        [data, id],
+        [data],
         (err, customer) => {
           if (err) {
             return res.status(401).json({
