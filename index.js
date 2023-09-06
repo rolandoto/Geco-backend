@@ -13,6 +13,7 @@ app.use(cors())
 
 dbConnection()
 
+
 app.use("/api/resecion",AuthRoutes.router)
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
