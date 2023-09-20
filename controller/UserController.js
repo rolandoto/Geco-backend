@@ -124,8 +124,6 @@ const UploadFile = async(req, res=response) =>{
         "https://github.com/rolandoto/image-pms/blob/main/Tarjeta%20Bienvenida%20Hue%CC%81sped%20sin%20nombre.png?raw=true"; // Reemplaza con la URL proporcionada por Imgur
   
       // Texto a superponer
-     
-
   
       // Cargar la imagen base
       const image = await loadImage(imageUrl);
