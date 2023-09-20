@@ -134,6 +134,7 @@ const UploadFile = async(req, res=response) =>{
       // Configurar el texto
       ctx.fillStyle = "rgb(0 0 0)";
       ctx.font = "40px cursive"
+      ctx.textEncoding = 'text/plain';
       ctx.fillText(text, 250, 250);
   
       // Convertir el lienzo a una URL de imagen
