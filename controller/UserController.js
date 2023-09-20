@@ -136,7 +136,7 @@ const UploadFile = async(req, res=response) =>{
       // Configurar el texto
       ctx.fillStyle = 'black';
       ctx.font = '40px Arial'; // Cambié la fuente a Arial
-      ctx.fillText('', 250, 250);  // Coordenadas donde se superpondrá el texto
+      ctx.fillText('ds', 250, 250);  // Coordenadas donde se superpondrá el texto
     
       // Convertir el lienzo a una imagen
       const editedImageBuffer = canvas.toBuffer('image/jpeg');
