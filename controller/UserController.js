@@ -108,70 +108,45 @@ const UploadFile = async(req, res=response) =>{
   const UploadCartPresent = async (req, res = response) => {
     const { Username,ID_Reserva } = req.body;
 
-    const text = "sdasdsadasd";
-  
     try {
-      const canvasWidth = 800;
-      const canvasHeight = 800;
-  
-      const uniqueId = uuid.v4();
-  
-      // Crear un lienzo
-      const canvas = createCanvas(canvasWidth, canvasHeight);
-      const ctx = canvas.getContext("2d");
-  
-      // Ruta de la imagen base desde Imgur
-      const imageUrl =
-        "https://github.com/rolandoto/image-pms/blob/main/Tarjeta%20Bienvenida%20Hue%CC%81sped%20sin%20nombre.png?raw=true"; // Reemplaza con la URL proporcionada por Imgur
-  
-      // Texto a superponer
-  
-      // Cargar la imagen base
-      const image = await loadImage(imageUrl);
-  
-      // Dibujar la imagen en el lienzo
+      const width = 1200
+    const height = 630
 
-      ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    const canvas = createCanvas(width, height)
+    const context = canvas.getContext('2d')
 
-      // Configurar el texto
-      ctx.fillStyle = 'black';
-      ctx.font = '40px Arial';
-      ctx.fillText('Texto asdsadsadsad', 250, 250); // Coordenadas donde se superpondrá el texto
-    
-      // Convertir el lienzo a una imagen
-      const editedImageBuffer = canvas.toBuffer('image/jpeg');
-    
-      // Guardar la imagen en un archivo
-      fs.writeFileSync(`./public/present-image${uniqueId}.jpg`, editedImageBuffer);
+    context.fillStyle = '#000'
+    context.fillRect(0, 0, width, height)
 
-      const imageCarPresents = `https://geco-backend-production.up.railway.app/public/present-image${uniqueId}.jpg`;
-  
-      let data = {
-        cart_present: imageCarPresents,
-      };
+    context.font = 'bold 70pt Menlo'
+    context.textAlign = 'center'
+    context.textBaseline = 'top'
+    context.fillStyle = '#3574d4'
 
-      await pool.query(
-        'UPDATE web_checking SET ? WHERE ID_Reserva = ?',
-        [data, ID_Reserva],
-        (err, customer) => {
-          if (err) {
-            return res.status(401).json({
-              ok: false,
-              msg: 'Error al actualizar datos',
-            });
-          } else {
-            return res.status(201).json({
-              ok: true,
-            });
-          }
-        }
-      );
-      
-    
+    const text = 'Hello, sdasdsadasd!'
+
+    const textWidth = context.measureText(text).width
+    context.fillRect(600 - textWidth / 2 - 10, 170 - 5, textWidth + 20, 120)
+    context.fillStyle = '#fff'
+    context.fillText(text, 600, 170)
+
+    context.fillStyle = '#fff'
+    context.font = 'bold 30pt Menlo'
+    context.fillText('flaviocopes.com', 600, 530)
+
+    loadImage('./public/logo.jpg').then(image => {
+      context.drawImage(image, 340, 515, 70, 70)
+      const buffer = canvas.toBuffer('image/png')
+      fs.writeFileSync('./public/defined.png', buffer)
       return res.status(201).json({
-        ok:true
+        ok:true,
+        img:`public/defined.png`
       })
       
+    })
+      
+    
+    
     } catch (error) {
       return res.status(401).json({
         ok: false,
