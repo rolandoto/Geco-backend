@@ -148,7 +148,7 @@ const UploadFile = async(req, res=response) =>{
       const imageCarPresents = `https://geco-backend-production.up.railway.app/public/edited-image${uniqueId}.jpg`;
   
       let data = {
-        cart_present: imageCarPresents,
+        cart_present: editedImageURL,
       };
       
       // Ahora puedes usar 'imageCarPresents' en tu consulta SQL
