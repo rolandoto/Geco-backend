@@ -108,7 +108,7 @@ const UploadFile = async(req, res=response) =>{
   const UploadCartPresent = async (req, res = response) => {
     const { Username,ID_Reserva } = req.body;
 
-    const text = "";
+    const text = Username;
   
     try {
       const canvasWidth = 800;
@@ -128,15 +128,13 @@ const UploadFile = async(req, res=response) =>{
   
       // Cargar la imagen base
       const image = await loadImage(imageUrl);
-  
-      // Dibujar la imagen en el lienzo
-
+      
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
       // Configurar el texto
       ctx.fillStyle = 'Black'; 
-      ctx.font = '40px "Better Yesterday"' // Cambié la fuente a Arial
-      ctx.fillText('Everyone hates this font :(', 250, 250) // Coordenadas donde se superpondrá el texto
+      ctx.font = '70px "Better Yesterday"' // Cambié la fuente a Arial
+      ctx.fillText(text, 250, 250) // Coordenadas donde se superpondrá el texto
     
       // Convertir el lienzo a una imagen
       const editedImageBuffer = canvas.toBuffer('image/jpeg');
