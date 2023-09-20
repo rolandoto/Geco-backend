@@ -4,6 +4,7 @@ const { pool } = require("../database/connection")
 const { createCanvas, loadImage } = require("canvas");
 const fs = require("fs");
 const uuid = require('uuid');
+const sharp = require("sharp");
 
 // Generar un único ID
 
@@ -129,30 +130,26 @@ const UploadFile = async(req, res=response) =>{
       const image = await loadImage(imageUrl);
   
       // Dibujar la imagen en el lienzo
-      ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight);
-  
+
+      ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
       // Configurar el texto
-      ctx.fillStyle = "rgb(0 0 0)";
-      ctx.font = "40px Arial";
-      ctx.textEncoding = 'utf-8';
-      ctx.fillText(text, 250, 250);
-  
-      // Convertir el lienzo a una URL de imagen
-      const editedImageURL = canvas.toDataURL("image/jpeg");
-  
-      // Guardar la imagen en un archivo en el directorio público
-      const outputFile = `./public/edited-image${uniqueId}.jpg`; // Ruta del archivo en el directorio público
-      const stream = fs.createWriteStream(outputFile);
-      const out = canvas.createJPEGStream();
-      out.pipe(stream);
-  
-      const imageCarPresents = `https://geco-backend-production.up.railway.app/public/edited-image${uniqueId}.jpg`;
+      ctx.fillStyle = 'black';
+      ctx.font = '40px Arial';
+      ctx.fillText('Texto asdsadsadsad', 250, 250); // Coordenadas donde se superpondrá el texto
+    
+      // Convertir el lienzo a una imagen
+      const editedImageBuffer = canvas.toBuffer('image/jpeg');
+    
+      // Guardar la imagen en un archivo
+      fs.writeFileSync(`./public/present-image${uniqueId}.jpg`, editedImageBuffer);
+
+      const imageCarPresents = `https://geco-backend-production.up.railway.app/public/present-image${uniqueId}.jpg`;
   
       let data = {
         cart_present: imageCarPresents,
       };
-      
-      // Ahora puedes usar 'imageCarPresents' en tu consulta SQL
+
       await pool.query(
         'UPDATE web_checking SET ? WHERE ID_Reserva = ?',
         [data, ID_Reserva],
@@ -169,6 +166,12 @@ const UploadFile = async(req, res=response) =>{
           }
         }
       );
+      
+    
+      return res.status(201).json({
+        ok:true
+      })
+      
     } catch (error) {
       return res.status(401).json({
         ok: false,

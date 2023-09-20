@@ -4,7 +4,6 @@ const AuthRoutes = require("./routes/Auth")
 const { dbConnection } = require("./database/db")
 require('dotenv').config()
 var path = require("path")
-
 const app = express()
 
 app.use(express.static("public"))
