@@ -132,7 +132,7 @@ const UploadFile = async(req, res=response) =>{
       ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight);
   
       // Configurar el texto
-      ctx.fillStyle = "rgba(0, 0, 0, 0)";
+      ctx.fillStyle = "rgb(0 0 0)";
       ctx.font = "40px cursive"
       ctx.fillText(text, 250, 250);
   
