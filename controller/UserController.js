@@ -128,12 +128,12 @@ const UploadFile = async(req, res=response) =>{
   
       // Cargar la imagen base
       const image = await loadImage(imageUrl);
-      
+
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
       // Configurar el texto
-      ctx.fillStyle = 'Black'; 
-      ctx.font = '70px "Better Yesterday"' // Cambié la fuente a Arial
+      ctx.fillStyle = '#444444'; 
+      ctx.font = '100px "Better Yesterday"' // Cambié la fuente a Arial
       ctx.fillText(text, 250, 250) // Coordenadas donde se superpondrá el texto
     
       // Convertir el lienzo a una imagen
