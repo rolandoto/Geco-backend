@@ -135,7 +135,6 @@ const UploadFile = async(req, res=response) =>{
 
       // Configurar el texto
       ctx.fillStyle = '#007cff';
-      ctx.fillRect(0, 0, 640, 480);
       ctx.font = '20px sans-serif, segoe-ui-emoji'; // Cambié la fuente a Arial
       ctx.fillText('ds', 250, 250);  // Coordenadas donde se superpondrá el texto
     
