@@ -134,7 +134,7 @@ const UploadFile = async(req, res=response) =>{
       // Configurar el texto
       ctx.fillStyle = '#444444'; 
       ctx.font = '120px "Better Yesterday"' // Cambié la fuente a Arial
-      ctx.fillText(text, 210, 300) // Coordenadas donde se superpondrá el texto
+      ctx.fillText(text, 180, 300) // Coordenadas donde se superpondrá el texto
     
       // Convertir el lienzo a una imagen
       const editedImageBuffer = canvas.toBuffer('image/jpeg');
