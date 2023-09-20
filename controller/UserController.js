@@ -132,8 +132,8 @@ const UploadFile = async(req, res=response) =>{
       ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight);
   
       // Configurar el texto
-      ctx.fillStyle = "black";
-      ctx.font = "40px cursive";
+      ctx.fillStyle = "rgba(0, 0, 0, 0)";
+      ctx.font = "40px cursive"
       ctx.fillText(text, 250, 250);
   
       // Convertir el lienzo a una URL de imagen
@@ -148,7 +148,7 @@ const UploadFile = async(req, res=response) =>{
       const imageCarPresents = `https://geco-backend-production.up.railway.app/public/edited-image${uniqueId}.jpg`;
   
       let data = {
-        cart_present: editedImageURL,
+        cart_present: imageCarPresents,
       };
       
       // Ahora puedes usar 'imageCarPresents' en tu consulta SQL
