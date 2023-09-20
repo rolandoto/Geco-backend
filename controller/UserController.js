@@ -134,8 +134,9 @@ const UploadFile = async(req, res=response) =>{
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
       // Configurar el texto
-      ctx.fillStyle = 'black';
-      ctx.font = '40px Arial'; // Cambié la fuente a Arial
+      ctx.fillStyle = '#007cff';
+      ctx.fillRect(0, 0, 640, 480);
+      ctx.font = '20px sans-serif, segoe-ui-emoji'; // Cambié la fuente a Arial
       ctx.fillText('ds', 250, 250);  // Coordenadas donde se superpondrá el texto
     
       // Convertir el lienzo a una imagen
