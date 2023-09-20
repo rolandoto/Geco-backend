@@ -1,13 +1,13 @@
 const {response} = require("express")
 const res = require("express/lib/response")
 const { pool } = require("../database/connection")
-const { createCanvas, loadImage } = require("canvas");
 const fs = require("fs");
 const uuid = require('uuid');
 const sharp = require("sharp");
-
+const { createCanvas, loadImage, registerFont } = require("canvas");
+const fontPath = "./public/Better Yesterday.otf";
+registerFont(fontPath, { family: "Better Yesterday" });
 // Generar un único ID
-
 
 const UploadFile = async(req, res=response) =>{  
 
@@ -123,7 +123,7 @@ const UploadFile = async(req, res=response) =>{
       // Ruta de la imagen base desde Imgur
       const imageUrl =
         "https://github.com/rolandoto/image-pms/blob/main/Tarjeta%20Bienvenida%20Hue%CC%81sped%20sin%20nombre.png?raw=true"; // Reemplaza con la URL proporcionada por Imgur
-  
+ 
       // Texto a superponer
   
       // Cargar la imagen base
@@ -134,9 +134,9 @@ const UploadFile = async(req, res=response) =>{
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
       // Configurar el texto
-      ctx.fillStyle = '#007cff';
-      ctx.font = '20px sans-serif, segoe-ui-emoji'; // Cambié la fuente a Arial
-      ctx.fillText('ds', 250, 250);  // Coordenadas donde se superpondrá el texto
+      ctx.fillStyle = 'Black'; 
+      ctx.font = '40px "Better Yesterday"' // Cambié la fuente a Arial
+      ctx.fillText('Everyone hates this font :(', 250, 250) // Coordenadas donde se superpondrá el texto
     
       // Convertir el lienzo a una imagen
       const editedImageBuffer = canvas.toBuffer('image/jpeg');
