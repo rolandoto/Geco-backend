@@ -122,7 +122,7 @@ const UploadFile = async(req, res=response) =>{
   
       // Ruta de la imagen base desde Imgur
       const imageUrl =
-        "https://github.com/rolandoto/image-pms/blob/main/Tarjeta%20Bienvenida%20Hue%CC%81sped%20sin%20nombre.png?raw=true"; // Reemplaza con la URL proporcionada por Imgur
+        "https://github.com/rolandoto/image-pms/blob/main/Tarjeta%20Bienvenida%20Hue%CC%81sped_Mesa%20de%20trabajo%201%20copia%203.png?raw=true"; // Reemplaza con la URL proporcionada por Imgur
  
       // Texto a superponer
   
